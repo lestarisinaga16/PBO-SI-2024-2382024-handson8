@@ -3,6 +3,7 @@ package views;
 import java.util.Scanner;
 
 import entities.TodoList;
+import services.TodoListServiceImpl;
 import services.TodoListServices;
 
 public class TodoListTerminalView implements TodoListView{
@@ -100,6 +101,18 @@ public class TodoListTerminalView implements TodoListView{
             System.out.println("Berhasil mengedit todo");
         } else {
             System.out.println("Gagal mengedit todo");
+        }
+    }
+
+    public void showtodoList() {
+        System.out.println("TODO LIST");
+        TodoListServiceImpl todoListService;
+        TodoList[] todoList = todoListServices.getTodoList();
+        for (var i = 0; i < todoList.length; i++) {
+            var todo = todoList[i];
+            if (todo != null) {
+                System.out.println((i + 1) + ". " + todo.getTodo());
+            }
         }
     }
 
